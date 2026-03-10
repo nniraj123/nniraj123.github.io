@@ -1,1 +1,1097 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Niraj Agarwal — Research Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --border: #ddd9d0;
+      --text: #1a1814;
+      --muted: #7a756a;
+      --accent: #1b4f8a;
+      --accent-light: rgba(27, 79, 138, 0.07);
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'IBM Plex Sans', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      padding: 8rem 4rem 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 5rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 560px; height: 560px;
+      background: radial-gradient(ellipse at center, rgba(27,79,138,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-affiliation {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-affiliation::before {
+      content: '';
+      display: inline-block;
+      width: 22px; height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    .hero-role {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.5s 0.12s ease both;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.5s 0.18s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.24s ease both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.8rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: #153f70; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.8rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-right { animation: fadeUp 0.6s 0.1s ease both; position: relative; z-index: 1; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .info-card-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .info-row:last-of-type { border-bottom: none; }
+    .info-key { color: var(--muted); width: 105px; flex-shrink: 0; font-size: 12px; }
+    .info-val a { color: var(--accent); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
+
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #1a7a3a;
+      margin-top: 1.2rem;
+    }
+
+    .available-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #1a7a3a;
+      animation: pulse 2.5s infinite;
+    }
+
+    /* SHARED */
+    section { border-bottom: 1px solid var(--border); }
+
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 5.5rem 4rem;
+    }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ABOUT */
+    #about .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    /* INTERESTS */
+    #interests .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .interests-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .interest-card {
+      background: var(--bg);
+      padding: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .interest-card:hover { background: var(--surface); }
+    .interest-icon { font-size: 1.3rem; margin-bottom: 0.7rem; }
+
+    .interest-title {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .interest-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .pub-item:first-child { border-top: 1px solid var(--border); }
+
+    .pub-year { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-authors { font-size: 12px; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-authors strong { color: var(--accent); font-weight: 500; }
+    .pub-journal { font-size: 12px; color: var(--muted); font-style: italic; }
+
+    .pub-doi {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    .pub-doi:hover { text-decoration: underline; }
+
+    .pub-badges { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-end; }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+
+    .badge-grl   { color: #1b4f8a; border-color: #1b4f8a; }
+    .badge-james { color: #7a3a1b; border-color: #7a3a1b; }
+    .badge-jfm   { color: #1a7a3a; border-color: #1a7a3a; }
+    .badge-ocean { color: #6a1b7a; border-color: #6a1b7a; }
+    .badge-spotlight { background: #fff8dc; border-color: #c8a800; color: #7a5c00; }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 195px 1fr;
+      gap: 3rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+
+    .exp-period { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 0.3rem; }
+    .exp-org { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 0.15rem; }
+    .exp-location { font-size: 11px; color: var(--muted); }
+
+    .exp-role {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+    /* SKILLS */
+    #skills .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .skills-groups { display: flex; flex-direction: column; gap: 2rem; }
+
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .skill-tag {
+      font-size: 12px;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* TALKS */
+    .talks-list { display: flex; flex-direction: column; }
+
+    .talk-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .talk-item:first-child { border-top: 1px solid var(--border); }
+
+    .talk-year { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 2px; }
+    .talk-title { font-size: 13px; color: var(--text); line-height: 1.5; margin-bottom: 0.2rem; }
+    .talk-venue { font-size: 12px; color: var(--muted); font-style: italic; }
+
+    .talk-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+      align-self: start;
+    }
+
+    /* CONTACT */
+    #contact .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-body p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 1rem; }
+
+    .contact-details {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.85rem 1.2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+    .contact-key { color: var(--muted); width: 85px; flex-shrink: 0; font-size: 12px; }
+    .contact-val a { color: var(--accent); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus { border-color: var(--accent); }
+    textarea { min-height: 110px; }
+
+    .submit-btn {
+      align-self: flex-start;
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover { background: #153f70; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+      .section-inner { padding: 4rem 1.5rem; }
+      #about .section-inner,
+      #interests .section-inner,
+      #skills .section-inner,
+      #contact .section-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .pub-item { grid-template-columns: 48px 1fr; }
+      .pub-badges { flex-direction: row; flex-wrap: wrap; grid-column: 2; }
+      .talk-item { grid-template-columns: 48px 1fr; }
+      .talk-type { display: none; }
+      footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Niraj <span>Agarwal</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div>
+      <div class="hero-affiliation">CIRES / NOAA Physical Sciences Laboratory</div>
+      <h1>Niraj Agarwal</h1>
+      <div class="hero-role">Research Scientist II &nbsp;·&nbsp; University of Colorado Boulder</div>
+      <p class="hero-desc">
+        Working at the intersection of applied mathematics, dynamical systems, and AI to improve forecasting of chaotic geophysical systems — from physics-based parameterizations and AI–physics hybrid frameworks to fully coupled AI Earth system emulators.
+      </p>
+      <div class="hero-ctas">
+        <a href="#publications" class="btn-primary">Publications</a>
+        <a href="#contact" class="btn-outline">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="info-card">
+        <div class="info-card-title">// Profile</div>
+        <div class="info-row">
+          <span class="info-key">Position</span>
+          <span class="info-val">Research Scientist II</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Institute</span>
+          <span class="info-val">CIRES, Univ. of Colorado Boulder</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Embedded at</span>
+          <span class="info-val">NOAA Physical Sciences Lab</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Location</span>
+          <span class="info-val">Boulder, CO 80305</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">PhD</span>
+          <span class="info-val">Imperial College London, 2022</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Email</span>
+          <span class="info-val"><a href="mailto:niraj.agarwal@colorado.edu">niraj.agarwal@colorado.edu</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">LinkedIn</span>
+          <span class="info-val"><a href="https://linkedin.com/in/niraj-agarwal-37827572" target="_blank">niraj-agarwal-37827572 ↗</a></span>
+        </div>
+        <div class="available-badge">
+          <span class="available-dot"></span>
+          Open to collaborations
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div>
+        <div class="section-eyebrow">About</div>
+        <h2>Research<br>Overview</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>I am a Research Scientist II at CIRES, embedded within NOAA's Physical Sciences Laboratory at the University of Colorado Boulder. My work lies at the intersection of applied mathematics, dynamical systems, fluid dynamics, and data-driven modeling, with a focus on improving forecasting and state estimation for chaotic systems such as the Earth's atmosphere and oceans.</p>
+        <p>I have developed and implemented mathematical methods for subgrid-scale ocean parameterization, objective scale separation in multiscale flows, reduced-order stochastic modeling, and data-driven augmentation of numerical ocean models.</p>
+        <p>More recently my research has advanced along two complementary directions: AI–physics hybrid frameworks that improve forecasts from imperfect physics-based Earth system models, and pure AI emulators of the coupled Earth system jointly modeling ocean, atmosphere, land, and sea ice.</p>
+        <p>Looking ahead, I aim to strengthen the reliability of exascale AI emulators — understanding what they learn, how design choices affect stability and generalization, and how to estimate uncertainty reliably using principled stochasticity. I am also interested in AI–physics hybrid methods using differentiable dynamical cores (e.g., JAX-GCM, DYNASORE) that are interpretable and deployable in real forecasting workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="interests">
+    <div class="section-inner">
+      <div>
+        <div class="section-eyebrow">Focus Areas</div>
+        <h2>Research<br>Interests</h2>
+      </div>
+      <div class="interests-grid reveal">
+        <div class="interest-card">
+          <div class="interest-icon">🌊</div>
+          <div class="interest-title">AI Earth System Emulation</div>
+          <p class="interest-desc">Coupled AI emulators for ocean, atmosphere, land, and sea ice to accelerate medium- to extended-range forecasting.</p>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🔀</div>
+          <div class="interest-title">AI–Physics Hybrid Frameworks</div>
+          <p class="interest-desc">Cross-attractor transforms and related methods for correcting biased or incomplete Earth system model outputs.</p>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">📊</div>
+          <div class="interest-title">Stochastic Parameterization</div>
+          <p class="interest-desc">Physics-based stochastic subgrid-scale schemes for ocean density, energy backscatter, and ensemble S2S statistics.</p>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">📉</div>
+          <div class="interest-title">Reduced-Order Modelling</div>
+          <p class="interest-desc">Data-driven low-dimensional representations of multiscale ocean variability for analysis and prediction.</p>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🎲</div>
+          <div class="interest-title">Uncertainty Quantification</div>
+          <p class="interest-desc">Principled stochastic extensions to AI emulators for reliable uncertainty estimation and extreme event prediction.</p>
+        </div>
+        <div class="interest-card">
+          <div class="interest-icon">🔬</div>
+          <div class="interest-title">Data Assimilation</div>
+          <p class="interest-desc">Assimilating observations into ML weather prediction models, including surface pressure into operational systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-inner">
+      <div class="section-eyebrow">Selected Publications</div>
+      <h2>Peer-Reviewed<br>Work</h2>
+
+      <div class="pub-list">
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2025</div>
+          <div class="pub-content">
+            <div class="pub-title">Assimilating observed surface pressure into ML weather prediction models</div>
+            <div class="pub-authors">Slivinski, L. C., Whitaker, J. S., Frolov, S., Smith, T. A., &amp; <strong>Agarwal, N.</strong></div>
+            <div class="pub-journal">Geophysical Research Letters, 52, e2024GL114396</div>
+            <a class="pub-doi" href="https://doi.org/10.1029/2024GL114396" target="_blank">doi:10.1029/2024GL114396 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-grl">GRL</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2025</div>
+          <div class="pub-content">
+            <div class="pub-title">Cross‐attractor transforms: Improving forecasts by learning optimal maps between dynamical systems and imperfect models</div>
+            <div class="pub-authors"><strong>Agarwal, N.</strong>, Amrhein, D. E., &amp; Grooms, I.</div>
+            <div class="pub-journal">Geophysical Research Letters, 52, e2024GL110472</div>
+            <a class="pub-doi" href="https://doi.org/10.1029/2024GL110472" target="_blank">doi:10.1029/2024GL110472 ↗</a>
+          </div>
+          <div class="pub-badges">
+            <span class="badge badge-grl">GRL</span>
+            <span class="badge badge-spotlight">⭐ GRL Spotlight</span>
+          </div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2025</div>
+          <div class="pub-content">
+            <div class="pub-title">The stochastic GM + E closure: A framework for coupling stochastic backscatter with the Gent–McWilliams parameterization</div>
+            <div class="pub-authors">Grooms, I., <strong>Agarwal, N.</strong>, Marques, G., Pegion, P. J., &amp; Yassin, H.</div>
+            <div class="pub-journal">Journal of Advances in Modeling Earth Systems, 17, e2024MS004560</div>
+            <a class="pub-doi" href="https://doi.org/10.1029/2024MS004560" target="_blank">doi:10.1029/2024MS004560 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-james">JAMES</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2023</div>
+          <div class="pub-content">
+            <div class="pub-title">Impact of stochastic ocean density corrections on air-sea flux variability</div>
+            <div class="pub-authors"><strong>Agarwal, N.</strong>, Small, R. J., Bryan, F. O., Grooms, I., &amp; Pegion, P. J.</div>
+            <div class="pub-journal">Geophysical Research Letters, 50, e2023GL104248</div>
+            <a class="pub-doi" href="https://doi.org/10.1029/2023GL104248" target="_blank">doi:10.1029/2023GL104248 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-grl">GRL</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2021</div>
+          <div class="pub-content">
+            <div class="pub-title">A comparison of data-driven approaches to build low-dimensional ocean models</div>
+            <div class="pub-authors"><strong>Agarwal, N.</strong>, Kondrashov, D., Dueben, P., Ryzhov, E., &amp; Berloff, P.</div>
+            <div class="pub-journal">Journal of Advances in Modeling Earth Systems, 13, e2021MS002537</div>
+            <a class="pub-doi" href="https://doi.org/10.1029/2021MS002537" target="_blank">doi:10.1029/2021MS002537 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-james">JAMES</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2021</div>
+          <div class="pub-content">
+            <div class="pub-title">Correlation-based flow decomposition and statistical analysis of the eddy forcing</div>
+            <div class="pub-authors"><strong>Agarwal, N.</strong>, Ryzhov, E. A., Kondrashov, D., &amp; Berloff, P.</div>
+            <div class="pub-journal">Journal of Fluid Mechanics, 924, A5</div>
+            <a class="pub-doi" href="https://doi.org/10.1017/jfm.2021.604" target="_blank">doi:10.1017/jfm.2021.604 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-jfm">JFM</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2020</div>
+          <div class="pub-content">
+            <div class="pub-title">On data-driven induction of the low-frequency variability in a coarse-resolution ocean model</div>
+            <div class="pub-authors">Ryzhov, E. A., Kondrashov, D., <strong>Agarwal, N.</strong>, McWilliams, J. C., &amp; Berloff, P.</div>
+            <div class="pub-journal">Ocean Modelling, 153, 101664</div>
+            <a class="pub-doi" href="https://doi.org/10.1016/j.ocemod.2020.101664" target="_blank">doi:10.1016/j.ocemod.2020.101664 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-ocean">Ocean Mod.</span></div>
+        </div>
+
+        <div class="pub-item reveal">
+          <div class="pub-year">2019</div>
+          <div class="pub-content">
+            <div class="pub-title">On data-driven augmentation of low-resolution ocean model dynamics</div>
+            <div class="pub-authors">Ryzhov, E. A., Kondrashov, D., <strong>Agarwal, N.</strong>, &amp; Berloff, P.</div>
+            <div class="pub-journal">Ocean Modelling, 142, 101464</div>
+            <a class="pub-doi" href="https://doi.org/10.1016/j.ocemod.2019.101464" target="_blank">doi:10.1016/j.ocemod.2019.101464 ↗</a>
+          </div>
+          <div class="pub-badges"><span class="badge badge-ocean">Ocean Mod.</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-eyebrow">Experience</div>
+      <h2>Research<br>Positions</h2>
+      <div class="exp-list">
+
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <div class="exp-period">May 2025 – Present</div>
+            <div class="exp-org">CIRES / NOAA-PSL</div>
+            <div class="exp-location">Boulder, CO, USA</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">Research Scientist II</div>
+            <p class="exp-desc">Leading development of a fully coupled AI Earth system emulator (atmosphere, ocean, land, sea ice) by extending GraphCast to accommodate 3D ocean fields alongside 3D atmosphere. Co-led the first in-house training of Google DeepMind's GraphCast at NOAA-PSL using the REPLAY dataset. Promoted early in recognition of significant scientific contributions.</p>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <div class="exp-period">March 2024 – April 2025</div>
+            <div class="exp-org">CIRES / NOAA-PSL</div>
+            <div class="exp-location">Boulder, CO, USA</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">Research Scientist I</div>
+            <p class="exp-desc">Developed Cross-Attractor Transformations (CATs) — a scalable mathematical framework for correcting biased Earth system model outputs — resulting in a GRL publication highlighted by an invited spotlight commentary. Co-PI on Argonne Leadership Computing Facility grant (250k Polaris &amp; 200k Frontier node hours).</p>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <div class="exp-period">March 2022 – Feb 2024</div>
+            <div class="exp-org">CIRES / Univ. of Colorado Boulder</div>
+            <div class="exp-location">Boulder, CO, USA</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">Postdoctoral Associate</div>
+            <p class="exp-desc">Investigated physics-based stochastic parameterization for ocean density in CESM-MOM6, analyzing impacts on air-sea flux variability (GRL, 2023). Performed MOM6 experiments quantifying effects of energy backscatter and stochastic physics schemes on ensemble statistics in S2S global forecasts.</p>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-meta">
+            <div class="exp-period">Aug 2021 – Feb 2022</div>
+            <div class="exp-org">Goethe University Frankfurt</div>
+            <div class="exp-location">Frankfurt, Germany</div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-role">Research Associate</div>
+            <p class="exp-desc">Contributed to the multi-institutional DataWave project, processing MS-GWaM outputs for data-driven emulation of orographic gravity wave drag. Proposed and implemented a novel Fourier transform theory for anisotropic grids, enabling advanced spectral analysis of ICON model outputs.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div>
+        <div class="section-eyebrow">Technical</div>
+        <h2>Skills &amp;<br>Tools</h2>
+      </div>
+      <div class="skills-groups reveal">
+        <div>
+          <div class="skill-group-title">AI &amp; Machine Learning</div>
+          <div class="skill-tags">
+            <span class="skill-tag">JAX</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">Haiku</span>
+            <span class="skill-tag">Optax</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">Data Assimilation</span>
+            <span class="skill-tag">GraphCast</span>
+            <span class="skill-tag">Numerical Methods</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Programming</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">FORTRAN</span>
+            <span class="skill-tag">Shell Scripting</span>
+            <span class="skill-tag">CUDA</span>
+            <span class="skill-tag">MPI</span>
+            <span class="skill-tag">MATLAB</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Data &amp; Infrastructure</div>
+          <div class="skill-tags">
+            <span class="skill-tag">xarray</span>
+            <span class="skill-tag">netCDF</span>
+            <span class="skill-tag">Zarr</span>
+            <span class="skill-tag">NCO</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">HPC / Parallel Computing</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Earth System Models</div>
+          <div class="skill-tags">
+            <span class="skill-tag">MOM6</span>
+            <span class="skill-tag">CESM</span>
+            <span class="skill-tag">GFS / UFS</span>
+            <span class="skill-tag">ICON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALKS -->
+  <section id="talks">
+    <div class="section-inner">
+      <div class="section-eyebrow">Presentations</div>
+      <h2>Selected Talks<br>&amp; Posters</h2>
+      <div class="talks-list">
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2026</div>
+          <div>
+            <div class="talk-title">Ocean and Coupled Earth System Emulators: Challenges, Solutions and Opportunities</div>
+            <div class="talk-venue">AMS 2026 — Houston, TX</div>
+          </div>
+          <div class="talk-type">Oral</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2025</div>
+          <div>
+            <div class="talk-title">Ocean and Coupled Earth System Emulation: Challenges, Solutions and Opportunities</div>
+            <div class="talk-venue">Math-Geo Seminar, Dept. of Applied Math, Univ. of Colorado Boulder</div>
+          </div>
+          <div class="talk-type">Invited (45 min)</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2025</div>
+          <div>
+            <div class="talk-title">Utilizing UFS Coupled Model Outputs to Build Independent and Coupled Earth System Emulators</div>
+            <div class="talk-venue">UIFCW Workshop — Boulder, CO</div>
+          </div>
+          <div class="talk-type">Poster</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2024</div>
+          <div>
+            <div class="talk-title">Cross-Attractor Transformations (CATs): A ML framework to optimize forecasts in the presence of model bias</div>
+            <div class="talk-venue">NCAR CGD-ML Seminar Series — Boulder, CO</div>
+          </div>
+          <div class="talk-type">Invited (45 min)</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2023</div>
+          <div>
+            <div class="talk-title">Cross-Attractor Transformations &amp; Impact of Stochastic Ocean Density Corrections on Air-Sea Flux Variability</div>
+            <div class="talk-venue">US Naval Research Lab, Stennis Space Flight Center, MS</div>
+          </div>
+          <div class="talk-type">Invited ×2</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2022</div>
+          <div>
+            <div class="talk-title">Cross-Attractor Transformations &amp; Sub-Grid Scale Density Parameterization in Ocean Circulation Models</div>
+            <div class="talk-venue">AGU Annual Fall Meeting — Chicago, IL</div>
+          </div>
+          <div class="talk-type">Poster ×2</div>
+        </div>
+
+        <div class="talk-item reveal">
+          <div class="talk-year">2021</div>
+          <div>
+            <div class="talk-title">A Comparison of Data-Driven Approaches to Build Low-Dimensional Ocean Models</div>
+            <div class="talk-venue">EGU General Assembly — Virtual</div>
+          </div>
+          <div class="talk-type">PICO</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div>
+        <div class="section-eyebrow">Contact</div>
+        <h2>Get in<br>Touch</h2>
+        <div class="contact-body">
+          <p>I welcome discussions about research collaborations, speaking invitations, and new scientific problems at the interface of AI and Earth system prediction.</p>
+        </div>
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-key">Email</span>
+            <span class="contact-val"><a href="mailto:niraj.agarwal@colorado.edu">niraj.agarwal@colorado.edu</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">Phone</span>
+            <span class="contact-val">+1-303-931-8747</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">LinkedIn</span>
+            <span class="contact-val"><a href="https://linkedin.com/in/niraj-agarwal-37827572" target="_blank">niraj-agarwal-37827572 ↗</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">Address</span>
+            <span class="contact-val">325 Broadway, Boulder, CO 80305</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" placeholder="Collaboration / Seminar / Other" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Describe your project or question..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send message →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Niraj Agarwal &nbsp;·&nbsp; CIRES / NOAA-PSL, University of Colorado Boulder</span>
+    <span><a href="mailto:niraj.agarwal@colorado.edu">niraj.agarwal@colorado.edu</a></span>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+        }
+      });
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.submit-btn');
+      btn.textContent = 'Message sent ✓';
+      btn.style.background = '#1a7a3a';
+      setTimeout(() => {
+        btn.textContent = 'Send message →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

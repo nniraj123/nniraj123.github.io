@@ -1,6 +1,7 @@
 # Niraj Agarwal — Personal Portfolio Webpage
 
-My personal academic portfolio for (https://yourusername.github.io), Research Scientist II at [CIRES](https://cires.colorado.edu), embedded within [NOAA's Physical Sciences Laboratory](https://psl.noaa.gov) at the University of Colorado Boulder.
+My personal academic portfolio (https://yourusername.github.io)
+Current Position: Research Scientist II at [CIRES](https://cires.colorado.edu), embedded within [NOAA's Physical Sciences Laboratory](https://psl.noaa.gov) at the University of Colorado Boulder.
 
 Live site: **https://yourusername.github.io**
 
